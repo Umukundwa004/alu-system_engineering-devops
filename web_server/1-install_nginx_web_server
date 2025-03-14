@@ -1,13 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# JDI
+sudo apt-get update -y;
+sudo apt-get install -y nginx;
+sudo apt-get install -y ufw;
 
-# Update the package list
-apt-get update -y
+sudo ufw enable;
+sudo ufw allow 'Nginx HTTP';
+sudo ufw allow 'OpenSSH';
 
-# Install Nginx
-apt-get install -y nginx
+sudo cp ./nginx.conf /etc/nginx/sites-enabled/default;
 
-# Create a custom HTML file with the required content
-echo "Holberton School" > /var/www/html/index.nginx-debian.html
-
-# Restart Nginx without using systemctl
-service nginx restart
+sudo service nginx restart;
